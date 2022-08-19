@@ -3,14 +3,16 @@ import {
   StyleSheet,
   View,
   } from 'react-native';
+import Navigation from './src/navigation/Navigation';
 import Index from './src/screen/HomeScreen/Index';
+
 
 export default function App() {
 
   return (
     <View style={styles.container}>
     
-       <Index />
+       <Navigation />
 
       <StatusBar style="auto" />
     </View>

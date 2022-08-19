@@ -5,7 +5,8 @@ import {
   View,
   Image,
   Animated,
-  TouchableOpacity
+  TouchableOpacity,
+  Pressable
   } from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { RectButton } from 'react-native-gesture-handler';
@@ -25,7 +26,7 @@ const RestaurantRow = (props) => {
       <View style={styles.swipableContainer}>
           <Ionicons name="albums-outline" size={40} color="black" />
           <Ionicons style={{marginVertical:8}} name="add-circle-outline" size={40} color="black" />
-          <Ionicons name="arrow-forward-circle-outline" size={40} color="black" />
+          <Ionicons onPress={props.openResDetails} name="arrow-forward-circle-outline" size={40} color="black" />
      </View>
     );
   };
@@ -33,9 +34,9 @@ const RestaurantRow = (props) => {
     return (
         <GestureHandlerRootView>
         <Swipeable renderRightActions={renderLeftActions}>
-           <TouchableOpacity onPress={()=> {console.log("Res click here")}}>
-            <View  style={styles.restaurantContainer}>
-            <Image style={styles.imgContainer} source={{uri:item.image}} />
+          
+            <Pressable onPress={props.openResDetails}  style={styles.restaurantContainer}>
+             <Image style={styles.imgContainer} source={{uri:item.image}} />
                 
                 <View style={styles.bottomContainer}>
                         <View>
@@ -46,8 +47,7 @@ const RestaurantRow = (props) => {
                         </View>
                         <Text style={styles.ratingTxt}>{parseFloat(item.rating)}</Text>
                 </View>  
-                </View>
-            </TouchableOpacity>
+                </Pressable>
         </Swipeable>
         </GestureHandlerRootView>
     );
